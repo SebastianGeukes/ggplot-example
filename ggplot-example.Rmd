@@ -1,0 +1,17 @@
+```{r, echo = TRUE, eval = FALSE}
+library("ggplot2")
+ggplot(mtcars, aes(disp, mpg, color = factor(cyl))) + geom_point() + geom_smooth(method = "lm")
+ggplot(mtcars, aes(factor(cyl), disp, color = factor(cyl))) + geom_violin() + geom_point()
+
+```
+
+```{r, echo = FALSE}
+library("ggplot2")
+library("gridExtra")
+
+a <- ggplot(mtcars, aes(disp, mpg, color = factor(cyl))) + geom_point() + geom_smooth(method = "lm") + labs(x = "Displacement", y = "Miles per Gallon") + theme(legend.position="none")
+b <- ggplot(mtcars, aes(factor(cyl), disp, color = factor(cyl))) + geom_violin() + geom_point() + labs(x = "# of cylinders", y = "Displacement", color = "# of cylinders") + theme(legend.position="none")
+grid.arrange(a, b, ncol = 2)
+```
+
+
